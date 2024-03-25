@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "../header/Header";
 import shape from "../Images/Shape.svg";
 import RegionPopup from "../popup/RegionPopup";
+import MainCountries from "../countries/Main/MainCountries";
 
 const MainWork: React.FC = () => {
   const [popupVisible, setPopupVisible] = useState<boolean>(false);
@@ -16,9 +17,14 @@ const MainWork: React.FC = () => {
           </div>
           <div className="h-14">
             <div className="flex bg-white shadow-md w-[200px] justify-center gap-11 h-14 items-center">
-              <h1 onClick={() => {
-                alert("Click right side button!!")
-              }} className="font-headerFont text-sm">Filter By Region</h1>
+              <h1
+                onClick={() => {
+                  alert("Click right side button!!");
+                }}
+                className="font-headerFont text-sm"
+              >
+                Filter By Region
+              </h1>
               <img
                 onClick={() => setPopupVisible(!popupVisible)}
                 className="cursor-pointer"
@@ -33,6 +39,7 @@ const MainWork: React.FC = () => {
             <div className="w-[195px]">{popupVisible && <RegionPopup />}</div>
           </div>
         </div>
+        <MainCountries />
       </div>
     </div>
   );
