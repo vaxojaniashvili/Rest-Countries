@@ -13,7 +13,7 @@ const MainWork: React.FC = () => {
       <Header />
       <div className="border border-black w-[89%] m-auto my-12">
         <div className="xl:flex grid justify-between items-center">
-          <div className="flex relative w-[480px] h-14 items-center rounded-md">
+          <div className="flex relative xl:w-[480px] w-full h-14 items-center rounded-md">
             <input
               className="bg-white shadow-xl w-full border h-full rounded-md px-16 outline-none"
               type="search"
