@@ -16,9 +16,9 @@ const MainCountries = () => {
   return (
     <div className="flex flex-wrap gap-3 justify-center my-12">
       {countries.length > 0 ? (
-                <div className="grid grid-cols-4 gap-44">
+                <div className="xl:grid xl:grid-cols-4 gap-44 grid-cols-1">
                 {countries.map((country: any, index: number) => (
-                  <div className="bg-white shadow-xl w-fit h-[320px]" key={index}>
+                  <div className="bg-white shadow-xl w-fit h-[320px] m-auto" key={index}>
                     <div>
                       <img className="w-[267px] h-[160px] rounded-md" src={country.flags.png}/>
                     </div>
