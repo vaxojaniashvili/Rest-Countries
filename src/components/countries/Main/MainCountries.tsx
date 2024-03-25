@@ -16,7 +16,7 @@ const MainCountries = () => {
   return (
     <div className="flex flex-wrap gap-3 justify-center my-12">
       {countries.length > 0 ? (
-                <div className="xl:grid xl:grid-cols-4 gap-44 grid-cols-1">
+                <div className="xl:grid xl:grid-cols-4 xl:gap-44 grid-cols-1 grid gap-10">
                 {countries.map((country: any, index: number) => (
                   <div className="bg-white shadow-xl w-fit h-[320px] m-auto" key={index}>
                     <div>
