@@ -3,6 +3,7 @@ import Header from "../header/Header";
 import shape from "../Images/Shape.svg";
 import RegionPopup from "../popup/RegionPopup";
 import MainCountries from "../countries/Main/MainCountries";
+import search from '../Images/search.svg'
 
 const MainWork: React.FC = () => {
   const [popupVisible, setPopupVisible] = useState<boolean>(false);
@@ -10,10 +11,11 @@ const MainWork: React.FC = () => {
   return (
     <div>
       <Header />
-      <div className="border border-black w-[91.8%] m-auto my-12">
+      <div className="border border-black w-[89%] m-auto my-12">
         <div className="flex justify-between items-center">
-          <div className="flex w-[480px] h-14 items-center">
-            <input className="w-full border border-black" type="search" />
+          <div className="flex relative w-[480px] h-14 items-center rounded-md">
+            <input className="bg-white shadow-xl w-full border h-full rounded-md px-16 outline-none" type="search" placeholder="Search for a country…" />
+            <img className="absolute left-[25px]" src={search}/>
           </div>
           <div className="h-14">
             <div className="flex bg-white shadow-md w-[200px] justify-center gap-11 h-14 items-center">

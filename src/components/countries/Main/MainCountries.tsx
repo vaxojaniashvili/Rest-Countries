@@ -16,14 +16,14 @@ const MainCountries = () => {
   return (
     <div className="flex flex-wrap gap-3 justify-center my-12">
       {countries.length > 0 ? (
-                <div className="grid grid-cols-4 gap-8">
+                <div className="grid grid-cols-4 gap-44">
                 {countries.map((country: any, index: number) => (
-                  <div className="bg-white shadow-md w-fit" key={index}>
+                  <div className="bg-white shadow-xl w-fit h-[320px]" key={index}>
                     <div>
-                      <img className="w-full" src={country.flags.png}/>
+                      <img className="w-[267px] h-[160px] rounded-md" src={country.flags.png}/>
                     </div>
-                    <div>
-                      <h3>{country.name.common}</h3>
+                    <div className="px-6 grid gap-1 text-[#111517] font-light text-sm font-headerFont">
+                      <h3 className="text-[#111517] font-extrabold py-4 text-[18px]">{country.name.common}</h3>
                       <h6>population: {country.population}</h6>
                       <h6>region: {country.region}</h6>
                       <h6>capital: {country.capital}</h6>

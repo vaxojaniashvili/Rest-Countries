@@ -1,6 +1,6 @@
 const RegionPopup = () => {
   return (
-    <div className="absolute w-full z-10">
+    <div className="absolute z-10">
       <div className="w-[200px] bg-white shadow-md px-5 font-headerFont mx-[-4px]">
         <h1 className="cursor-pointer text-black">Africa</h1>
         <h1 className="cursor-pointer">America</h1>
