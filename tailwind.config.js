@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        headerFont: ["Nunito Sans", "sans-serif"]
+      }
+    },
   },
   plugins: [],
 }
