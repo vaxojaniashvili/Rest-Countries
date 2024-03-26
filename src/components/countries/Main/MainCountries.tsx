@@ -2,15 +2,19 @@ import { useEffect, useState } from "react";
 
 const MainCountries:any = ({searchQuery}:any) => {
   const [countries, setCountries] = useState<any>([]);
-
+  const [gifSrc,setGifSrc] = useState("https://media4.giphy.com/media/3oEjI6SIIHBdRxXI40/200w.gif?cid=6c09b952uzn6m25jbdpn3l6w19qf6lvlyqktm842lpscdv96&ep=v1_gifs_search&rid=200w.gif&ct=g")
+  
   useEffect(() => {
     const fetchCountries = async () => {
       const response = await fetch("https://restcountries.com/v3.1/all");
       const data = await response.json();
       setCountries(data);
     };
-
     fetchCountries();
+    const timer = setTimeout(() => {
+      setGifSrc("")
+    },2300)
+    return () => clearTimeout(timer)
   }, []);
   const filtredCountries = countries.filter((country:any) => {
     return country.name.common.toLowerCase().includes(searchQuery.toLowerCase())
@@ -35,7 +39,7 @@ const MainCountries:any = ({searchQuery}:any) => {
                 ))}
               </div>
       ) : (
-        <img className="m-auto" src="https://media4.giphy.com/media/3oEjI6SIIHBdRxXI40/200w.gif?cid=6c09b952uzn6m25jbdpn3l6w19qf6lvlyqktm842lpscdv96&ep=v1_gifs_search&rid=200w.gif&ct=g"/>
+        <img className="m-auto" src={gifSrc}/>
       ) }
     </div>
   );
