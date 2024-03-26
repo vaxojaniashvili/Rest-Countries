@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const MainCountries = () => {
+const MainCountries:any = ({searchQuery}:any) => {
   const [countries, setCountries] = useState<any>([]);
 
   useEffect(() => {
@@ -12,12 +12,15 @@ const MainCountries = () => {
 
     fetchCountries();
   }, []);
+  const filtredCountries = countries.filter((country:any) => {
+    return country.name.common.toLowerCase().includes(searchQuery.toLowerCase())
+  })
 
   return (
     <div className="flex flex-wrap gap-3 justify-center my-12">
-      {countries.length > 0 ? (
+      {filtredCountries.length > 0 ? (
                 <div className="xl:grid xl:grid-cols-4 xl:gap-44 grid-cols-1 grid gap-10">
-                {countries.map((country: any, index: number) => (
+                {filtredCountries.map((country: any, index: number) => (
                   <div className="bg-white shadow-xl w-fit h-[320px] m-auto" key={index}>
                     <div>
                       <img className="w-[267px] h-[160px] rounded-md" src={country.flags.png}/>

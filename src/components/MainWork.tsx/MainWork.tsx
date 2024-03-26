@@ -7,7 +7,7 @@ import search from "../Images/search.svg";
 
 const MainWork: React.FC = () => {
   const [popupVisible, setPopupVisible] = useState<boolean>(false);
-
+  const [searchQuery, setSearchQuery] = useState<string>("");
   return (
     <div>
       <Header />
@@ -15,6 +15,8 @@ const MainWork: React.FC = () => {
         <div className="xl:flex grid justify-between items-center">
           <div className="flex relative xl:w-[480px] w-full h-14 items-center rounded-md">
             <input
+              value={searchQuery}
+              onChange={(e) =>setSearchQuery(e.target.value)}
               className="bg-white shadow-xl w-full border h-full rounded-md px-16 outline-none"
               type="search"
               placeholder="Search for a country…"
@@ -48,7 +50,7 @@ const MainWork: React.FC = () => {
             <div className="w-[195px]">{popupVisible && <RegionPopup />}</div>
           </div>
         </div>
-        <MainCountries />
+        <MainCountries searchQuery={searchQuery} />
       </div>
     </div>
   );
