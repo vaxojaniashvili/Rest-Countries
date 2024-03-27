@@ -1,11 +1,8 @@
-import { useState } from "react";
 import darkModeLogo from "../Images/dark-mode.svg";
-
+import UseDarkMode from "../DarkMode/UseDarkMode";
 const Header = () => {
-  const [dark, setDark] = useState<boolean>(true);
-  const toggleDarkMode = () => {
-    setDark(!dark);
-  };
+  const [dark, toggleDarkMode] = UseDarkMode();
+
   return (
     <div
       className={`flex shadow-md w-full py-10 justify-between font-headerFont xl:px-[102px] px-4 ${

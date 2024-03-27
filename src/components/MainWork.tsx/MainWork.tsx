@@ -4,12 +4,16 @@ import shape from "../Images/Shape.svg";
 import RegionPopup from "../popup/RegionPopup";
 import MainCountries from "../countries/Main/MainCountries";
 import search from "../Images/search.svg";
+import UseDarkMode from "../DarkMode/UseDarkMode";
+
 
 const MainWork: React.FC = () => {
   const [popupVisible, setPopupVisible] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [dark] = UseDarkMode()
+  
   return (
-    <div>
+    <div className={`${dark ? "bg-white" : "bg-[#202C36]"}`}>
       <Header />
       <div className="border border-black w-[89%] m-auto my-12">
         <div className="xl:flex grid justify-between items-center">
