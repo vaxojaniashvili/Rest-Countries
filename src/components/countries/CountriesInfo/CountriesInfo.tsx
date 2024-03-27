@@ -42,10 +42,10 @@ const GeorgiaInfo: React.FC = () => {
                 Native Name:
                 <div className="text-[#111517]">{georgiaData.name.common}</div>
               </h3>
-              <p className="flex gap-1 font-headerFont">Population:
+              <p className="flex gap-1 font-headerFont">
+                Population:
                 <div className="text-[#111517]">{georgiaData.population}</div>
               </p>
-
             </div>
           </div>
         </div>

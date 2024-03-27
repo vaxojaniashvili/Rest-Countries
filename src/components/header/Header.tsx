@@ -18,7 +18,7 @@ const Header = () => {
       </h1>
       <div onClick={toggleDarkMode} className="flex items-center gap-2">
         <img className="cursor-pointer" src={darkModeLogo} alt="" />
-        <h1 className={`cursor-pointer xl:text-[16px] font-semibold text-[12px] select-none ${dark ? "text-[#111517]" : 'text-[#111517]'}`}>
+        <h1 className={`cursor-pointer xl:text-[16px] font-semibold text-[12px] select-none ${dark ? "text-[#111517]" : 'text-[#ffffff]'}`}>
           Dark Mode
         </h1>
       </div>
