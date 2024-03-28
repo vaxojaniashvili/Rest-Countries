@@ -5,37 +5,53 @@ import RegionPopup from "../popup/RegionPopup";
 import MainCountries from "../countries/Main/MainCountries";
 import search from "../Images/search.svg";
 import UseDarkMode from "../DarkMode/UseDarkMode";
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const MainWork: React.FC = () => {
   const [popupVisible, setPopupVisible] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [dark] = UseDarkMode()
-  
+  const [dark] = UseDarkMode();
+
+  const notify = () => toast.error("Error please try again later!!");
+
   return (
     <div className={`${dark ? "bg-white" : "bg-[#202C36]"}`}>
+      <ToastContainer
+        position="top-right"
+        autoClose={1000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+      <ToastContainer />
       <Header />
       <div className="border border-black w-[89%] m-auto my-12">
         <div className="xl:flex grid justify-between items-center">
           <div className="flex relative xl:w-[480px] w-full h-14 items-center rounded-md">
             <input
               value={searchQuery}
-              onChange={(e) =>setSearchQuery(e.target.value)}
+              onChange={(e) => setSearchQuery(e.target.value)}
               className="bg-white shadow-xl w-full border h-full rounded-md px-16 outline-none"
               type="search"
               placeholder="Search for a country…"
             />
             <img className="absolute left-[25px]" src={search} />
           </div>
-          <div className="h-14">
+          <div onClick={notify} className="h-14">
             <div
-              onClick={() => setPopupVisible(!popupVisible)}
+              // onClick={() => setPopupVisible(!popupVisible)}
               className="flex bg-white shadow-md w-[200px] justify-center gap-11 h-14 items-center xl:mt-0 mt-10 cursor-pointer"
             >
               <h1
-                onClick={() => {
-                  setPopupVisible(!popupVisible);
-                }}
+                // onClick={() => {
+                //   setPopupVisible(!popupVisible);
+                // }}
                 className="font-headerFont text-sm"
               >
                 Filter By Region
