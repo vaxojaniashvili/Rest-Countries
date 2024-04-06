@@ -1,22 +1,19 @@
 import React, { useState } from "react";
 import Header from "../header/Header";
-import shape from "../Images/Shape.svg";
 import RegionPopup from "../popup/RegionPopup";
 import MainCountries from "../countries/Main/MainCountries";
 import search from "../Images/search.svg";
-import UseDarkMode from "../DarkMode/UseDarkMode";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const MainWork: React.FC = () => {
-  const [popupVisible, setPopupVisible] = useState<boolean>(false);
+  const [popupVisible,] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [dark] = UseDarkMode();
 
   const notify = () => toast.error("Error please try again later!!");
 
   return (
-    <div className={`${dark ? "bg-white" : "bg-[#202C36]"}`}>
+    <div>
       <ToastContainer
         position="top-right"
         autoClose={1000}
@@ -31,7 +28,7 @@ const MainWork: React.FC = () => {
       />
       <ToastContainer />
       <Header />
-      <div className="border border-black w-[89%] m-auto my-12">
+      <div className="w-[89%] m-auto my-12">
         <div className="xl:flex grid justify-between items-center">
           <div className="flex relative xl:w-[480px] w-full h-14 items-center rounded-md">
             <input
@@ -44,25 +41,6 @@ const MainWork: React.FC = () => {
             <img className="absolute left-[25px]" src={search} />
           </div>
           <div onClick={notify} className="h-14">
-            <div
-              // onClick={() => setPopupVisible(!popupVisible)}
-              className="flex bg-white shadow-md w-[200px] justify-center gap-11 h-14 items-center xl:mt-0 mt-10 cursor-pointer"
-            >
-              <h1
-                // onClick={() => {
-                //   setPopupVisible(!popupVisible);
-                // }}
-                className="font-headerFont text-sm"
-              >
-                Filter By Region
-              </h1>
-              <img
-                onClick={() => setPopupVisible(!popupVisible)}
-                className="cursor-pointer"
-                src={shape}
-                alt="Shape"
-              />
-            </div>
           </div>
         </div>
         <div className="flex w-full justify-end my-1">
