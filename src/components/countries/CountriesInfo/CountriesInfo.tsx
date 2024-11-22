@@ -1,57 +1,85 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
-const GeorgiaInfo: React.FC = () => {
-  const [georgiaData, setGeorgiaData] = useState<any | null>(null);
+const CountryInfo: React.FC = () => {
+  const { name } = useParams(); // URL პარამეტრი
+  const [countryData, setCountryData] = useState<any | null>(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("https://restcountries.com/v3.1/name/georgia");
-        const [georgia] = await res.json();
-        setGeorgiaData(georgia);
+        const res = await fetch(`https://restcountries.com/v3.1/name/${name}`);
+        const [country] = await res.json();
+        setCountryData(country);
       } catch (error) {
-        console.error("Error", error);
+        console.error("Error fetching data:", error);
       }
     };
 
     fetchData();
-  }, []);
+  }, [name]); // დინამიური პარამეტრი
 
-  const navigateToCountry = () => {
-    if (georgiaData) {
-      navigate(`/country/${georgiaData.name.common}`, {
-        state: georgiaData,
-      });
-    }
+  const navigateBack = () => {
+    navigate("/");
   };
 
   return (
-    <div className="border border-black">
-      {georgiaData && (
-        <div onClick={navigateToCountry}>
-          <button>
-            <Link to="/">Back</Link>
-          </button>
-          <div className="flex gap-8 justify-center">
-            <img src={georgiaData.flags.png} />
-            <div className="block">
-              <h3>{georgiaData.name.common}</h3>
-              <h3 className="flex gap-1">
-                Native Name:
-                <div className="text-[#111517]">{georgiaData.name.common}</div>
-              </h3>
-              <p className="flex gap-1 font-headerFont">
-                Population:
-                <div className="text-[#111517]">{georgiaData.population}</div>
-              </p>
+    <div className="min-h-screen bg-gradient-to-b from-blue-100 via-white to-blue-50 p-6">
+      <div className="max-w-5xl mx-auto">
+        <button
+          onClick={navigateBack}
+          className="bg-blue-500 text-white px-4 py-2 rounded-lg shadow-md hover:bg-blue-600 transition duration-300 mb-6"
+        >
+          Back
+        </button>
+        {countryData ? (
+          <div className="bg-white shadow-lg rounded-lg overflow-hidden">
+            <img
+              src={countryData.flags.png}
+              alt={countryData.name.common}
+              className="w-full h-64 object-contain"
+            />
+            <div className="p-6">
+              <h1 className="text-3xl font-bold text-blue-700 mb-4">
+                {countryData.name.common}
+              </h1>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <h3 className="text-lg font-semibold">Native Name:</h3>
+                  <p className="text-gray-700">
+                    {Object.values(countryData.name.nativeName || {})
+                      .map((n: any) => n.common)
+                      .join(", ")}
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">Population:</h3>
+                  <p className="text-gray-700">
+                    {countryData.population.toLocaleString()}
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">Region:</h3>
+                  <p className="text-gray-700">{countryData.region}</p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold">Capital:</h3>
+                  <p className="text-gray-700">
+                    {countryData.capital
+                      ? countryData.capital.join(", ")
+                      : "N/A"}
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      )}
+        ) : (
+          <p className="text-center text-gray-600">Loading country data...</p>
+        )}
+      </div>
     </div>
   );
 };
 
-export default GeorgiaInfo;
+export default CountryInfo;
