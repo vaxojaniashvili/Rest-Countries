@@ -8,15 +8,17 @@ import Header from "./components/header/Header.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <App />,
   },
   {
-    path: "country/georgia",
-    element: <>
-    <Header/>
-    <CountriesInfo/>
-    </>
-  }
+    path: "country/:name",
+    element: (
+      <>
+        <Header />
+        <CountriesInfo />
+      </>
+    ),
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

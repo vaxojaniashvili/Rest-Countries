@@ -30,24 +30,28 @@ const MainCountries: any = ({ searchQuery }: any) => {
       {filtredCountries.length > 0 ? (
         <div className="xl:grid xl:grid-cols-4 xl:gap-44 grid-cols-1 grid gap-10">
           {filtredCountries.map((country: any, index: number) => (
-            <Link to={`/country/${country.name.common}`}>
+            <Link
+              to={`/country/${country.name.common}`}
+              state={country} // მონაცემების გადაცემა
+            >
               <div
                 className="bg-white shadow-xl w-fit h-[320px] m-auto"
-                key={index}
+                key={country.cca3}
               >
                 <div>
                   <img
                     className="w-[267px] h-[160px] rounded-md"
                     src={country.flags.png}
+                    alt={country.name.common}
                   />
                 </div>
                 <div className="px-6 grid gap-1 text-[#111517] font-light text-sm font-headerFont">
                   <h3 className="text-[#111517] font-extrabold py-4 text-[18px]">
                     {country.name.common}
                   </h3>
-                  <h6>population: {country.population}</h6>
-                  <h6>region: {country.region}</h6>
-                  <h6>capital: {country.capital}</h6>
+                  <h6>Population: {country.population.toLocaleString()}</h6>
+                  <h6>Region: {country.region}</h6>
+                  <h6>Capital: {country.capital?.[0] || "N/A"}</h6>
                 </div>
               </div>
             </Link>
