@@ -29,11 +29,8 @@ const MainCountries: any = ({ searchQuery }: any) => {
     <div className="flex flex-wrap gap-3 justify-center my-12">
       {filtredCountries.length > 0 ? (
         <div className="xl:grid xl:grid-cols-4 xl:gap-44 grid-cols-1 grid gap-10">
-          {filtredCountries.map((country: any, index: number) => (
-            <Link
-              to={`/country/${country.name.common}`}
-              state={country} // მონაცემების გადაცემა
-            >
+          {filtredCountries.map((country: any) => (
+            <Link to={`/country/${country.name.common}`} state={country}>
               <div
                 className="bg-white shadow-xl w-fit h-[320px] m-auto"
                 key={country.cca3}
